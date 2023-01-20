@@ -55,48 +55,56 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     CONST = 258,                   /* CONST  */
-    BEGIN = 259,                   /* BEGIN  */
-    VAR = 260,                     /* VAR  */
-    DO = 261,                      /* DO  */
-    THEN = 262,                    /* THEN  */
-    PRINT = 263,                   /* PRINT  */
-    RETURN = 264,                  /* RETURN  */
-    INT = 265,                     /* INT  */
-    WHILE = 266,                   /* WHILE  */
-    ELSE = 267,                    /* ELSE  */
-    FOR = 268,                     /* FOR  */
-    VOID = 269,                    /* VOID  */
-    END = 270,                     /* END  */
-    CLASS = 271,                   /* CLASS  */
-    IF = 272,                      /* IF  */
-    READ = 273,                    /* READ  */
-    INCLUDE = 274,                 /* INCLUDE  */
-    IOSTREAM = 275,                /* IOSTREAM  */
-    USING = 276,                   /* USING  */
-    NAMESPACE = 277,               /* NAMESPACE  */
-    STD = 278,                     /* STD  */
-    MAIN = 279,                    /* MAIN  */
-    COUT = 280,                    /* COUT  */
-    PROGRAM = 281,                 /* PROGRAM  */
-    ID = 282,                      /* ID  */
-    CONST_INT = 283,               /* CONST_INT  */
-    CONST_REAL = 284,              /* CONST_REAL  */
-    CONST_CAR = 285,               /* CONST_CAR  */
-    STRING = 286,                  /* STRING  */
-    CONST_SIR = 287,               /* CONST_SIR  */
-    CHAR = 288,                    /* CHAR  */
-    INTEGER = 289,                 /* INTEGER  */
-    REAL = 290,                    /* REAL  */
-    ATRIB = 291,                   /* ATRIB  */
-    NE = 292,                      /* NE  */
-    LT = 293,                      /* LT  */
-    GE = 294,                      /* GE  */
-    LE = 295,                      /* LE  */
-    DIV = 296,                     /* DIV  */
-    MOD = 297,                     /* MOD  */
-    OR = 298,                      /* OR  */
-    AND = 299,                     /* AND  */
-    NOT = 300                      /* NOT  */
+    VAR = 259,                     /* VAR  */
+    DO = 260,                      /* DO  */
+    THEN = 261,                    /* THEN  */
+    PRINT = 262,                   /* PRINT  */
+    RETURN = 263,                  /* RETURN  */
+    INT = 264,                     /* INT  */
+    WHILE = 265,                   /* WHILE  */
+    ELSE = 266,                    /* ELSE  */
+    FOR = 267,                     /* FOR  */
+    VOID = 268,                    /* VOID  */
+    END = 269,                     /* END  */
+    CLASS = 270,                   /* CLASS  */
+    IF = 271,                      /* IF  */
+    READ = 272,                    /* READ  */
+    INCLUDE = 273,                 /* INCLUDE  */
+    IOSTREAM = 274,                /* IOSTREAM  */
+    USING = 275,                   /* USING  */
+    NAMESPACE = 276,               /* NAMESPACE  */
+    STD = 277,                     /* STD  */
+    MAIN = 278,                    /* MAIN  */
+    COUT = 279,                    /* COUT  */
+    PROGRAM = 280,                 /* PROGRAM  */
+    PARA_C = 281,                  /* PARA_C  */
+    PARA_O = 282,                  /* PARA_O  */
+    REAL = 283,                    /* REAL  */
+    ARRAY_O = 284,                 /* ARRAY_O  */
+    ARRAY_C = 285,                 /* ARRAY_C  */
+    BARA_C = 286,                  /* BARA_C  */
+    BARA_O = 287,                  /* BARA_O  */
+    OUTPUT_STREAM = 288,           /* OUTPUT_STREAM  */
+    ID = 289,                      /* ID  */
+    CONST_INT = 290,               /* CONST_INT  */
+    CONST_REAL = 291,              /* CONST_REAL  */
+    CONST_CAR = 292,               /* CONST_CAR  */
+    STRING = 293,                  /* STRING  */
+    CONST_SIR = 294,               /* CONST_SIR  */
+    NR_BAZA10 = 295,               /* NR_BAZA10  */
+    CONSTANTA = 296,               /* CONSTANTA  */
+    ATRIB = 297,                   /* ATRIB  */
+    NE = 298,                      /* NE  */
+    LT = 299,                      /* LT  */
+    GE = 300,                      /* GE  */
+    LE = 301,                      /* LE  */
+    GT = 302,                      /* GT  */
+    EQ = 303,                      /* EQ  */
+    DIV = 304,                     /* DIV  */
+    MOD = 305,                     /* MOD  */
+    OR = 306,                      /* OR  */
+    AND = 307,                     /* AND  */
+    NOT = 308                      /* NOT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -106,59 +114,67 @@ extern int yydebug;
 #define YYerror 256
 #define YYUNDEF 257
 #define CONST 258
-#define BEGIN 259
-#define VAR 260
-#define DO 261
-#define THEN 262
-#define PRINT 263
-#define RETURN 264
-#define INT 265
-#define WHILE 266
-#define ELSE 267
-#define FOR 268
-#define VOID 269
-#define END 270
-#define CLASS 271
-#define IF 272
-#define READ 273
-#define INCLUDE 274
-#define IOSTREAM 275
-#define USING 276
-#define NAMESPACE 277
-#define STD 278
-#define MAIN 279
-#define COUT 280
-#define PROGRAM 281
-#define ID 282
-#define CONST_INT 283
-#define CONST_REAL 284
-#define CONST_CAR 285
-#define STRING 286
-#define CONST_SIR 287
-#define CHAR 288
-#define INTEGER 289
-#define REAL 290
-#define ATRIB 291
-#define NE 292
-#define LT 293
-#define GE 294
-#define LE 295
-#define DIV 296
-#define MOD 297
-#define OR 298
-#define AND 299
-#define NOT 300
+#define VAR 259
+#define DO 260
+#define THEN 261
+#define PRINT 262
+#define RETURN 263
+#define INT 264
+#define WHILE 265
+#define ELSE 266
+#define FOR 267
+#define VOID 268
+#define END 269
+#define CLASS 270
+#define IF 271
+#define READ 272
+#define INCLUDE 273
+#define IOSTREAM 274
+#define USING 275
+#define NAMESPACE 276
+#define STD 277
+#define MAIN 278
+#define COUT 279
+#define PROGRAM 280
+#define PARA_C 281
+#define PARA_O 282
+#define REAL 283
+#define ARRAY_O 284
+#define ARRAY_C 285
+#define BARA_C 286
+#define BARA_O 287
+#define OUTPUT_STREAM 288
+#define ID 289
+#define CONST_INT 290
+#define CONST_REAL 291
+#define CONST_CAR 292
+#define STRING 293
+#define CONST_SIR 294
+#define NR_BAZA10 295
+#define CONSTANTA 296
+#define ATRIB 297
+#define NE 298
+#define LT 299
+#define GE 300
+#define LE 301
+#define GT 302
+#define EQ 303
+#define DIV 304
+#define MOD 305
+#define OR 306
+#define AND 307
+#define NOT 308
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 21 "sspascal.y"
+#line 23 "sspascal.y"
 
   	int l_val;
 	char *p_val;
 
-#line 162 "y.tab.h"
+#line 178 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

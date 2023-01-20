@@ -1,0 +1,513 @@
+Nonterminals useless in grammar
+
+    arraydecl
+    statement
+    statement_list
+    expresion
+    assignment
+    term
+    factor
+    while_statement
+    condition
+    relation
+    sect_var
+    lista_var
+    decl_const
+    $@1
+    decl_var
+    tip
+    tip_simplu
+    expr_stat
+    factor_stat
+    constanta
+    instr_comp
+    lista_instr
+    instr
+    instr_atrib
+    variabila
+    expresie
+    lista_expr
+    instr_if
+    ramura_else
+    conditie
+    expr_logica
+    factor_logic
+    op_rel
+    instr_while
+    instr_print
+    lista_elem
+    element
+    instr_read
+    lista_variab
+
+
+Terminals unused in grammar
+
+    CONST
+    BEGIN
+    VAR
+    DO
+    THEN
+    PRINT
+    RETURN
+    WHILE
+    ELSE
+    FOR
+    VOID
+    END
+    CLASS
+    IF
+    READ
+    INCLUDE
+    IOSTREAM
+    USING
+    NAMESPACE
+    STD
+    COUT
+    PROGRAM
+    ARRAY_O
+    ARRAY_C
+    CONST_INT
+    CONST_REAL
+    CONST_CAR
+    STRING
+    CONST_SIR
+    NR_BAZA10
+    NE
+    LT
+    GE
+    LE
+    GT
+    EQ
+    '+'
+    '-'
+    DIV
+    MOD
+    '*'
+    '/'
+    OR
+    AND
+    NOT
+    '='
+    ':'
+    '('
+    ')'
+    '['
+    ']'
+    '.'
+    '<'
+    '>'
+
+
+Rules useless in grammar
+
+    9 arraydecl: type ID ARRAY_O ARRAY_C '=' BARA_O BARA_C ';'
+   10          | type ID ARRAY_O NR_BAZA10 ARRAY_C '='
+
+   11 statement: assignment ';'
+
+   12 statement_list: statement
+   13               | statement ';' statement
+
+   14 expresion: expresion '+' term ';'
+   15          | term ';'
+
+   16 assignment: ID '=' expresion ';'
+
+   17 term: term '*' factor ';'
+   18     | factor ';'
+
+   19 factor: PARA_O expresion PARA_C ';'
+   20       | ID ';'
+
+   21 while_statement: WHILE PARA_O condition PARA_C BARA_O statement_list BARA_C
+
+   22 condition: expresion relation expresion
+   23          | ID relation ID ';'
+   24          | ID relation CONST ';'
+
+   25 relation: LT
+   26         | LE
+   27         | GT
+   28         | GE
+   29         | ATRIB
+   30         | EQ
+   31         | NE
+
+   32 sect_var: ε
+   33         | VAR lista_var
+
+   34 lista_var: decl_var
+   35          | lista_var decl_var
+
+   36 $@1: ε
+
+   37 decl_const: ID '=' $@1 expr_stat ';'
+
+   38 decl_var: lista_id ':' tip ';'
+
+   39 tip: tip_simplu
+
+   40 tip_simplu: INT
+   41           | REAL
+
+   42 expr_stat: factor_stat
+   43          | expr_stat '+' expr_stat
+   44          | expr_stat '-' expr_stat
+   45          | expr_stat '*' expr_stat
+   46          | expr_stat '/' expr_stat
+   47          | expr_stat DIV expr_stat
+   48          | expr_stat MOD expr_stat
+
+   49 factor_stat: ID
+   50            | constanta
+   51            | '(' expr_stat ')'
+
+   52 constanta: CONST_INT
+   53          | CONST_REAL
+   54          | CONST_CAR
+
+   55 instr_comp: BEGIN lista_instr END
+
+   56 lista_instr: instr
+   57            | lista_instr ';' instr
+
+   58 instr: ε
+   59      | instr_atrib
+   60      | instr_if
+   61      | instr_while
+   62      | instr_comp
+   63      | instr_read
+   64      | instr_print
+
+   65 instr_atrib: variabila ATRIB expresie
+
+   66 variabila: ID
+   67          | ID '[' expresie ']'
+   68          | ID '.' ID
+
+   69 expresie: factor
+   70         | expresie '+' expresie
+   71         | expresie '-' expresie
+   72         | expresie '*' expresie
+   73         | expresie '/' expresie
+   74         | expresie DIV expresie
+   75         | expresie MOD expresie
+
+   76 factor: ID
+   77       | constanta
+   78       | ID '(' lista_expr ')'
+   79       | '(' expresie ')'
+   80       | ID '[' expresie ']'
+   81       | ID '.' ID
+
+   82 lista_expr: expresie
+   83           | lista_expr ',' expresie
+
+   84 instr_if: IF conditie THEN instr ramura_else
+
+   85 ramura_else: ELSE instr
+
+   86 conditie: expr_logica
+   87         | expresie op_rel expresie
+
+   88 expr_logica: factor_logic
+   89            | expr_logica AND expr_logica
+   90            | expr_logica OR expr_logica
+
+   91 factor_logic: '(' conditie ')'
+   92             | NOT factor_logic
+
+   93 op_rel: '='
+   94       | '<'
+   95       | '>'
+   96       | NE
+   97       | LE
+   98       | GE
+
+   99 instr_while: WHILE conditie DO instr
+
+  100 instr_print: PRINT '(' lista_elem ')'
+
+  101 lista_elem: element
+  102           | lista_elem ',' element
+
+  103 element: expresie
+  104        | CONST_SIR
+
+  105 instr_read: READ '(' lista_variab ')'
+
+  106 lista_variab: variabila
+  107             | lista_variab ',' variabila
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: INT MAIN PARA_O PARA_C BARA_O declaration_list BARA_C
+
+    2 declaration_list: declaration ';'
+
+    3 declaration: type ';'
+    4            | type lista_id ','
+
+    5 type: INT
+    6     | REAL
+
+    7 lista_id: ID
+    8         | ID ATRIB CONSTANTA
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    '(' (40)
+    ')' (41)
+    '*' (42)
+    '+' (43)
+    ',' (44) 4
+    '-' (45)
+    '.' (46)
+    '/' (47)
+    ':' (58)
+    ';' (59) 2 3
+    '<' (60)
+    '=' (61)
+    '>' (62)
+    '[' (91)
+    ']' (93)
+    error (256)
+    CONST (258)
+    BEGIN (259)
+    VAR (260)
+    DO (261)
+    THEN (262)
+    PRINT (263)
+    RETURN (264)
+    INT (265) 1 5
+    WHILE (266)
+    ELSE (267)
+    FOR (268)
+    VOID (269)
+    END (270)
+    CLASS (271)
+    IF (272)
+    READ (273)
+    INCLUDE (274)
+    IOSTREAM (275)
+    USING (276)
+    NAMESPACE (277)
+    STD (278)
+    MAIN (279) 1
+    COUT (280)
+    PROGRAM (281)
+    PARA_C (282) 1
+    PARA_O (283) 1
+    REAL (284) 6
+    ARRAY_O (285)
+    ARRAY_C (286)
+    BARA_C (287) 1
+    BARA_O (288) 1
+    ID (289) 7 8
+    CONST_INT <p_val> (290)
+    CONST_REAL <p_val> (291)
+    CONST_CAR <p_val> (292)
+    STRING (293)
+    CONST_SIR (294)
+    NR_BAZA10 (295)
+    CONSTANTA (296) 8
+    ATRIB (297) 8
+    NE (298)
+    LT (299)
+    GE (300)
+    LE (301)
+    GT (302)
+    EQ (303)
+    DIV (304)
+    MOD (305)
+    OR (306)
+    AND (307)
+    NOT (308)
+
+
+Nonterminals, with rules where they appear
+
+    $accept (69)
+        on left: 0
+    program (70)
+        on left: 1
+        on right: 0
+    declaration_list (71)
+        on left: 2
+        on right: 1
+    declaration (72)
+        on left: 3 4
+        on right: 2
+    type (73)
+        on left: 5 6
+        on right: 3 4
+    lista_id (74)
+        on left: 7 8
+        on right: 4
+
+
+State 0
+
+    0 $accept: • program $end
+
+    INT  shift, and go to state 1
+
+    program  go to state 2
+
+
+State 1
+
+    1 program: INT • MAIN PARA_O PARA_C BARA_O declaration_list BARA_C
+
+    MAIN  shift, and go to state 3
+
+
+State 2
+
+    0 $accept: program • $end
+
+    $end  shift, and go to state 4
+
+
+State 3
+
+    1 program: INT MAIN • PARA_O PARA_C BARA_O declaration_list BARA_C
+
+    PARA_O  shift, and go to state 5
+
+
+State 4
+
+    0 $accept: program $end •
+
+    $default  accept
+
+
+State 5
+
+    1 program: INT MAIN PARA_O • PARA_C BARA_O declaration_list BARA_C
+
+    PARA_C  shift, and go to state 6
+
+
+State 6
+
+    1 program: INT MAIN PARA_O PARA_C • BARA_O declaration_list BARA_C
+
+    BARA_O  shift, and go to state 7
+
+
+State 7
+
+    1 program: INT MAIN PARA_O PARA_C BARA_O • declaration_list BARA_C
+
+    INT   shift, and go to state 8
+    REAL  shift, and go to state 9
+
+    declaration_list  go to state 10
+    declaration       go to state 11
+    type              go to state 12
+
+
+State 8
+
+    5 type: INT •
+
+    $default  reduce using rule 5 (type)
+
+
+State 9
+
+    6 type: REAL •
+
+    $default  reduce using rule 6 (type)
+
+
+State 10
+
+    1 program: INT MAIN PARA_O PARA_C BARA_O declaration_list • BARA_C
+
+    BARA_C  shift, and go to state 13
+
+
+State 11
+
+    2 declaration_list: declaration • ';'
+
+    ';'  shift, and go to state 14
+
+
+State 12
+
+    3 declaration: type • ';'
+    4            | type • lista_id ','
+
+    ID   shift, and go to state 15
+    ';'  shift, and go to state 16
+
+    lista_id  go to state 17
+
+
+State 13
+
+    1 program: INT MAIN PARA_O PARA_C BARA_O declaration_list BARA_C •
+
+    $default  reduce using rule 1 (program)
+
+
+State 14
+
+    2 declaration_list: declaration ';' •
+
+    $default  reduce using rule 2 (declaration_list)
+
+
+State 15
+
+    7 lista_id: ID •
+    8         | ID • ATRIB CONSTANTA
+
+    ATRIB  shift, and go to state 18
+
+    $default  reduce using rule 7 (lista_id)
+
+
+State 16
+
+    3 declaration: type ';' •
+
+    $default  reduce using rule 3 (declaration)
+
+
+State 17
+
+    4 declaration: type lista_id • ','
+
+    ','  shift, and go to state 19
+
+
+State 18
+
+    8 lista_id: ID ATRIB • CONSTANTA
+
+    CONSTANTA  shift, and go to state 20
+
+
+State 19
+
+    4 declaration: type lista_id ',' •
+
+    $default  reduce using rule 4 (declaration)
+
+
+State 20
+
+    8 lista_id: ID ATRIB CONSTANTA •
+
+    $default  reduce using rule 8 (lista_id)

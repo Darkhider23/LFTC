@@ -78,23 +78,23 @@ STRING       \".*\"
 /* Rule Section */
 %%
 					/* yytext is the text in the buffer */
-return                                   { addToPIF(yytext, -1); }
-int					{ addToPIF(yytext, -1); }
-while					{ addToPIF(yytext, -1); }
-for					{ addToPIF(yytext, -1); }
-void                                    	{ addToPIF(yytext, -1); }
-class                                   { addToPIF(yytext, -1); }
-if                                    	{ addToPIF(yytext, -1); }
-else                                   { addToPIF(yytext, -1); }
-read                                    { addToPIF(yytext, -1); }
-include                                    { addToPIF(yytext, -1); }
-iostream                                    { addToPIF(yytext, -1); }
-using                                    { addToPIF(yytext, -1); }
-namespace                                    { addToPIF(yytext, -1); }
-std                                    { addToPIF(yytext, -1); }
-main                                    { addToPIF(yytext, -1); }
-cout                                    { addToPIF(yytext, -1); }
-\;                                    	{ addToPIF(yytext, -1); }
+return                                   { addToPIF(yytext, -1); return "RETURN";}
+int					{ addToPIF(yytext, -1); return "INT";}
+while					{ addToPIF(yytext, -1);return "WHILE"; }
+for					{ addToPIF(yytext, -1); return "FOR";}
+void                                    	{ addToPIF(yytext, -1); return "VOID";}
+class                                   { addToPIF(yytext, -1); return "CLASS";}
+if                                    	{ addToPIF(yytext, -1); return "IF";}
+else                                   { addToPIF(yytext, -1); return "ELSE";}
+read                                    { addToPIF(yytext, -1); return "READ";}
+include                                    { addToPIF(yytext, -1); return "INCLUDE";}
+iostream                                    { addToPIF(yytext, -1); return "IOSTREAM";}
+using                                    { addToPIF(yytext, -1); return "USING";}
+namespace                                    { addToPIF(yytext, -1); return "NAMESPACE";}
+std                                    { addToPIF(yytext, -1); return "STD";}
+main                                    { addToPIF(yytext, -1); return "MAIN";}
+cout                                    { addToPIF(yytext, -1); return "";}
+\;                                    	{ addToPIF(yytext, -1); return ";"}
 \#                                    	{ addToPIF(yytext, -1); }
 \{                                    	{ addToPIF(yytext, -1); }
 \}                                    	{ addToPIF(yytext, -1); }

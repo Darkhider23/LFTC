@@ -13,13 +13,11 @@ NR_BAZA10	{CIFRA_ZEC}+
 NR_REAL		{NR_BAZA10}"."{NR_BAZA10}?
 DELIMIT_1	[;.,:]
 OPERATOR_1	[+*/()<>=]|"-"|"["|"]"
-COMENT		"{"[^}]*"}"
 STRING		\".*\"
 
 %%
 
 [ \t\n]
-{COMENT}
 
 
 return		{return RETURN;}
@@ -41,6 +39,11 @@ main		{return MAIN;}
 cout		{return COUT;}
 program		{return PROGRAM;}
 
+"<="		{return LE;}
+">="		{return GE;}
+">"		{return GT;}
+"=="		{return EQ;}
+"<>"		{return NE;}
 "="		{return ATRIB;}
 "<"		{return LT;}
 div		{return DIV;}
@@ -48,6 +51,12 @@ mod		{return MOD;}
 or		{return OR;}
 and		{return AND;}
 not		{return NOT;}
+")"		{return PARA_C;}
+"("		{return PARA_O;}
+"{"		{return BARA_O;}
+"}"		{return BARA_C;}
+"["		{return ARRAY_O;}
+"]"		{return ARRAY_C;}
 
 {IDENTIFICATOR}	{return ID;}
 {NR_BAZA10}	{
@@ -62,6 +71,7 @@ not		{return NOT;}
 
 {DELIMIT_1}	{return yytext[0];}
 {OPERATOR_1}	{return yytext[0];}
+.		{ printf("!!!%s!!!\n", yytext);}
 
 %%
 
